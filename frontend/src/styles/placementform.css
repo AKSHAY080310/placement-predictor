@@ -1,0 +1,40 @@
+.placement-form {
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.skills-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.result-box {
+  margin-top: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+}
