@@ -1,5 +1,3 @@
-# ml/predictor.py
-
 import joblib
 import os
 import pandas as pd
@@ -13,7 +11,6 @@ def predict_placement_probability(user_features: dict) -> float:
 
     X_df = pd.DataFrame([user_features])
 
-    # Force categorical columns to string
     cat_cols = ["Gender", "Stream", "HistoryOfBacklogs"]
     for col in cat_cols:
         X_df[col] = X_df[col].astype(str)
