@@ -1,5 +1,6 @@
 import joblib
 import os
+import numpy as np
 import pandas as pd
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -18,4 +19,5 @@ def predict_placement_probability(user_features: dict) -> float:
     X = preprocessor.transform(X_df)
     probability = model.predict_proba(X)[0][1]
 
-    return round(probability, 2)
+    # Never present a statistical estimate as certainty: keep it inside 2%-98%.
+    return round(float(np.clip(probability, 0.02, 0.98)), 2)
