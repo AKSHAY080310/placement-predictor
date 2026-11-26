@@ -1,1 +1,26 @@
-git 
+# Dependencies
+node_modules/
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environment files (keep the .example versions)
+.env
+.env.*
+!.env.example
+
+# Build output
+frontend/dist/
+dist/
+build/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
