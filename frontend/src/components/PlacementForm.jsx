@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "../styles/placementform.css";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
 
 const PlacementForm = () => {
   console.log("PlacementForm mounted"); 
@@ -26,7 +28,7 @@ const PlacementForm = () => {
 useEffect(() => {
   console.log("🔵 useEffect triggered");
 
-  fetch("http://localhost:8000/options/placement")
+  fetch(`${API_URL}/options/placement`)
     .then(res => {
       console.log("placement response status:", res.status);
       return res.json();
@@ -39,7 +41,7 @@ useEffect(() => {
     })
     .catch(err => console.error("placement fetch error:", err));
 
-  fetch("http://localhost:8000/options/roles")
+  fetch(`${API_URL}/options/roles`)
     .then(res => {
       console.log("roles response status:", res.status);
       return res.json();
@@ -58,7 +60,7 @@ useEffect(() => {
       return;
     }
 
-    fetch(`http://localhost:8000/options/skills?role=${formData.role}`)
+    fetch(`${API_URL}/options/skills?role=${encodeURIComponent(formData.role)}`)
       .then(res => res.json())
       .then(data => setSkillOptions(data.skills || []));
   }, [formData.role]);
@@ -89,7 +91,7 @@ useEffect(() => {
       cgpa: Number(formData.cgpa)
     };
 
-    const response = await fetch("http://localhost:8000/evaluate", {
+    const response = await fetch(`${API_URL}/evaluate`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
